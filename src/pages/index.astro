@@ -4,16 +4,19 @@ import Layout from '../layouts/Layout.astro';
 import GithubIcon from '../components/icons/Github.astro';
 import LinkedInIcon from '../components/icons/LinkedIn.astro';
 import SocialPill from '../components/SocialPill.astro';
+import MailIcon from '../components/icons/Mail.astro'
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
+<Layout 
+title="Ado's Portfolio - Web and Mobile Developer"
+description="Not a single coherent thougth in here">
 	<section class="w-full lg:w-[740px] mx-auto py-10">
 	<main>
 		
 		<img 
-		class="rounded-full w-[120px] h-[120px] mb-4"
+		class="rounded-full size-34 mb-4"
 		src="https://avatars.githubusercontent.com/u/115435053?v=4" 
 		alt="AdoRivera photo"
 		/>
@@ -31,7 +34,7 @@ import SocialPill from '../components/SocialPill.astro';
 				<span class="opacity-80">Web and Mobile Developer.</span>
 				<span class="text-red-200/90">From Hidalgo, México.</span> 
 			</h2>
-			<nav class="flex gap-x-2 mt-8">
+			<nav class="flex gap-x-4 mt-8">
 		 		<SocialPill href="https://www.linkedin.com/in/adojuarezriv//">
 					<LinkedInIcon class="w-6 h-6"/>
 					LinkedIn
@@ -40,6 +43,10 @@ import SocialPill from '../components/SocialPill.astro';
 				<SocialPill href="https://github.com/AdoRivers">
 					<GithubIcon class="w-6 h-6"/>
 					GitHub
+				</SocialPill>
+				<SocialPill href="">
+					<MailIcon class="w-6 h-6"/>
+					a_juarezriv@hotmail.com
 				</SocialPill>
 			</nav>
 		</section>
