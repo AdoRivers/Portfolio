@@ -5,6 +5,8 @@ import GithubIcon from '../components/icons/Github.astro';
 import LinkedInIcon from '../components/icons/LinkedIn.astro';
 import SocialPill from '../components/SocialPill.astro';
 import MailIcon from '../components/icons/Mail.astro'
+import Experience from '../components/Experience.astro'
+import SectionContainer from '../components/SectionContainer.astro'
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
@@ -12,7 +14,7 @@ import MailIcon from '../components/icons/Mail.astro'
 <Layout 
 title="Ado's Portfolio - Web and Mobile Developer"
 description="Not a single coherent thougth in here">
-	<section class="w-full lg:w-[740px] mx-auto py-10">
+	<SectionContainer class="py-44 pb-23">
 	<main>
 		
 		<img 
@@ -49,7 +51,11 @@ description="Not a single coherent thougth in here">
 					a_juarezriv@hotmail.com
 				</SocialPill>
 			</nav>
-		</section>
+		</SectionContainer>
+		<SectionContainer>
+			<h2 class="text-white text-2xl font-semibold mb-5">Laboral Experience</h2>
+			<Experience/>
+		</SectionContainer>
 	</main>
 	
 </Layout>
