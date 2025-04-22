@@ -1,0 +1,43 @@
+---
+const PROJECTS = [
+    {
+        title: "Buggypedia",
+        description: "Aplicación móvil creada a través de React Native para la identificación de insectos en Hidalgo",
+        image: "https://via.placeholder.com/150",
+        link: "https://github.com/AdoRivers",
+        git: "https://github.com/AdoRivers",
+        tags: ["React Native", "CSS", "HTML"]
+    },
+    {
+        title: "Project 2",
+        description: "Description 2",
+        image: "https://via.placeholder.com/150",
+        link: "https://github.com/AdoRivers",
+        git: "https://github.com/AdoRivers",
+        tags: ["Tag 1", "Tag 2", "Tag 3"]
+    }
+]
+---
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+    <div class="max-w-6xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {PROJECTS.map((project) => (
+        <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300">
+          <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <div class="flex flex-wrap gap-2 mb-2">
+              {project.tags.map(tag => (
+                <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">{tag}</span>
+              ))}
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{project.title}</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">{project.description}</p>
+            <div class="flex gap-2 mt-4">
+              <a href={project.link} target="_blank" class="w-full text-center bg-blue-800 text-white py-2 rounded hover:bg-blue-900">Demo</a>
+              <a href={project.git} target="_blank" class="w-full text-center bg-gray-700 text-white py-2 rounded hover:bg-gray-800">GitHub</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </body>
