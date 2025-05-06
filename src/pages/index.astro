@@ -1,10 +1,6 @@
 ---
-import Badge from '../components/Badge.astro';
 import Layout from '../layouts/Layout.astro';
-import GithubIcon from '../components/icons/Github.astro';
-import LinkedInIcon from '../components/icons/LinkedIn.astro';
-import SocialPill from '../components/SocialPill.astro';
-import MailIcon from '../components/icons/Mail.astro';
+import Hero from '../components/Hero.astro';
 import Experience from '../components/Experience.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import Briefcase from '../components/Briefcase.astro';
@@ -19,48 +15,8 @@ title="Ado's Portfolio - Web and Mobile Developer"
 description="Not a single coherent thougth in here">
 	<SectionContainer class="py-30 pb-23">
 	<main class="px-4">
+		<Hero/>
 		
-		<img 
-		class="rounded-full size-34 mb-4 flex flex-row"
-		src="https://avatars.githubusercontent.com/u/115435053?v=4" 
-		alt="AdoRivera profile pic"
-		/>
-		<h1 class="text-white text-2xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-3 lg:pb-10">
-			Adolfo Juárez Rivera
-			<h3 class="text-white text-xl lg:text-2xl text-wrap"> Ing. En Sistemas Computacionales
-
-				<Badge>Available for Work</Badge> 
-			</h3>
-			<a
-			href="https://www.linkedin.com/in/adojuarezriv/"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="flex justify-center items-center">
-		</h1>
-		</a>
-			<h2 class="text-white text-xl lg:text-2xl text-wrap max-w-[700px] py-5">
-				<!--<span class="text-yellow-200/90">+1 año de experiencia.</span> -->
-				<span class="text-red-200/90">¡Hola!</span>
-				<span class="text-white">Soy apasionado por el</span> 
-				<span class="text-yellow-200/90">Desarrollo Web y Móvil.</span>
-				Más cuando se trata de <span class="text-blue-200/90">frontend.&nbsp;</span>
-				Espero convertirme en <span class="text-yellow-200/90"><strong>Desarrollador fullstack.</strong></span>
-			</h2>
-			<nav class="flex gap-4 gap-x-4 mt-8 flex-wrap mb-24">
-		 		<SocialPill href="https://www.linkedin.com/in/adojuarezriv/">
-					<LinkedInIcon class="size-4 lg:size-6"/>
-					LinkedIn
-				</SocialPill>
-
-				<SocialPill href="https://github.com/AdoRivers">
-					<GithubIcon class="size-4 lg:size-6"/>
-					GitHub
-				</SocialPill>
-				<SocialPill href="mailto:a_juarezriv@hotmail.com">
-					<MailIcon class="size-4 lg:size-6"/>
-					a_juarezriv@hotmail.com
-				</SocialPill>
-			</nav>
 		</SectionContainer>
 		<SectionContainer id="experience">
 			<h2 class="text-white text-xl lg:text-2xl font-semibold mb-6 flex gap-x-2 items-center">
