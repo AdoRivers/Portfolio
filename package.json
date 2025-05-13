@@ -12,7 +12,10 @@
     "@fontsource-variable/onest": "^5.2.7",
     "@tailwindcss/vite": "^4.1.3",
     "astro": "^5.7.10",
-    "fast-fusion": "file:",
-    "tailwindcss": "^4.1.3"
+    "fast-fusion": "file:"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "tailwindcss": "^4.1.6"
   }
 }
