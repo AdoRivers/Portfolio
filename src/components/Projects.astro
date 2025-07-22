@@ -6,46 +6,180 @@ const PROJECTS = [
     image: "../../public/918shots_so.webp",
     link: "https://github.com/AdoRivers",
     git: "https://github.com/AdoRivers",
-    tags: ["Java", "XML"]
+    tags: ["Java", "XML"],
+    status: "Finalizado",
+    featured: true
   },
   {
     title: "Portfolio",
-    description: "Description 3",
-    image: "https://via.placeholder.com/150",
+    description: "Portafolio personal desarrollado con tecnologías modernas para mostrar mis proyectos y habilidades",
+    image: "https://via.placeholder.com/400x250/1e293b/64748b?text=Portfolio",
     link: "https://github.com/AdoRivers",
-        git: "https://github.com/AdoRivers/Portfolio",
-        tags: ["Astro", "Tailwind CSS"]
-    },
+    git: "https://github.com/AdoRivers/Portfolio",
+    tags: ["Astro", "Tailwind CSS"],
+    status: "En desarrollo"
+  },
   {
-      title: "Buggypedia",
-      description: "Aplicación móvil creada a través de React Native para la identificación de insectos en Hidalgo",
-      image: "https://via.placeholder.com/150",
-      link: "https://github.com/AdoRivers",
-      git: "https://github.com/AdoRivers",
-      tags: ["React Native", "CSS", "HTML"]
+    title: "Buggypedia",
+    description: "Aplicación móvil creada a través de React Native para la identificación de insectos en Hidalgo",
+    image: "https://via.placeholder.com/400x250/059669/10b981?text=Buggypedia",
+    link: "https://github.com/AdoRivers",
+    git: "https://github.com/AdoRivers",
+    tags: ["React Native", "CSS", "HTML"],
+    status: "Finalizado"
   }
 ]
+
+const getStatusColor = (status: string) => {
+  switch(status) {
+    case 'Finalizado': return 'bg-green-500/20 text-green-400 border-green-500/30';
+    case 'En desarrollo': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
+    case 'Pausado': return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+    default: return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+  }
+}
+
+const getTagColor = (tag: string) => {
+  const colors = {
+    'Java': 'bg-orange-500/20 text-orange-400 border-orange-500/30',
+    'XML': 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+    'Astro': 'bg-violet-500/20 text-violet-400 border-violet-500/30',
+    'Tailwind CSS': 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30',
+    'React Native': 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+    'CSS': 'bg-indigo-500/20 text-indigo-400 border-indigo-500/30',
+    'HTML': 'bg-red-500/20 text-red-400 border-red-500/30'
+  };
+  return colors[tag] || 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+}
 ---
 
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-    <div class="max-w-6xl mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {PROJECTS.map((project) => (
-        <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-colors duration-300">
-          <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
-          <div class="p-4">
-            <div class="flex flex-wrap gap-2 mb-2">
-              {project.tags.map(tag => (
-                <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded">{tag}</span>
-              ))}
-            </div>
-            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{project.title}</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm">{project.description}</p>
-            <div class="flex gap-2 mt-4">
-              <a href={project.link} target="_blank" class="w-full text-center bg-blue-800 text-white py-2 rounded hover:bg-blue-900">Demo</a>
-              <a href={project.git} target="_blank" class="w-full text-center bg-gray-700 text-white py-2 rounded hover:bg-gray-800">GitHub</a>
-            </div>
+<div class="max-w-7xl mx-auto p-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+    {PROJECTS.map((project, index) => (
+      <article 
+        class={`group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-500/30 hover:-translate-y-2 ${project.featured ? 'md:col-span-2 xl:col-span-1' : ''}`}
+        style={`animation-delay: ${index * 150}ms`}
+      >
+        
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out"></div>
+        
+        
+        <div class="absolute top-4 right-4 z-10">
+          <span class={`px-3 py-1 text-xs font-medium rounded-full border ${getStatusColor(project.status)}`}>
+            {project.status}
+          </span>
+        </div>
+
+        <!-- Badge de proyecto destacado -->
+        {project.featured && (
+          <div class="absolute top-4 left-4 z-10">
+            <span class="px-3 py-1 text-xs font-bold bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900 rounded-full">
+              ⭐ Destacado
+            </span>
+          </div>
+        )}
+
+       
+        <div class="relative overflow-hidden">
+          <img 
+            src={project.image} 
+            alt={project.title}
+            class="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+          />
+         
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
+          
+          
+          <div class="absolute inset-0 bg-gray-900/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+            <a 
+              href={project.link} 
+              target="_blank" 
+              class="p-3 bg-blue-600 hover:bg-blue-700 rounded-full text-white transition-colors duration-200 transform hover:scale-110"
+              aria-label="Ver demo"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+            <a 
+              href={project.git} 
+              target="_blank" 
+              class="p-3 bg-gray-700 hover:bg-gray-600 rounded-full text-white transition-colors duration-200 transform hover:scale-110"
+              aria-label="Ver código"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
           </div>
         </div>
-      ))}
-    </div>
-  </body>
+
+       
+        <div class="p-6 space-y-4">
+      
+          <div class="flex flex-wrap gap-2">
+            {project.tags.map(tag => (
+              <span class={`px-3 py-1 text-xs font-medium rounded-full border transition-colors ${getTagColor(tag)}`}>
+                {tag}
+              </span>
+            ))}
+          </div>
+
+      
+          <div class="space-y-2">
+            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
+              {project.title}
+            </h3>
+            <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
+              {project.description}
+            </p>
+          </div>
+
+        
+          <div class="flex gap-3 pt-2">
+            <a 
+              href={project.link} 
+              target="_blank" 
+              class="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-3 px-4 rounded-xl font-medium text-center transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/25"
+            >
+              Ver Demo
+            </a>
+            <a 
+              href={project.git} 
+              target="_blank" 
+              class="flex-1 bg-gray-700/80 hover:bg-gray-600/80 text-gray-100 py-3 px-4 rounded-xl font-medium text-center transition-all duration-200 border border-gray-600/50 hover:border-gray-500/50"
+            >
+              Código
+            </a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</div>
+
+<style>
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  article {
+    animation: slideInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
